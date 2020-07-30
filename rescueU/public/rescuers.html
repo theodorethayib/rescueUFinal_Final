@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>rescueU</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+      html, body {
+          height: 100%;
+          margin: 0;
+      }
+  </style>
+  </head>
+
+  <body>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+  
+      <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyCxWu-CElk7QYP7THINJBt-cMhnOTGxPpc",
+          authDomain: "rescueu.firebaseapp.com",
+          databaseURL: "https://rescueu.firebaseio.com",
+          projectId: "rescueu",
+          storageBucket: "rescueu.appspot.com",
+          messagingSenderId: "983145892348",
+          appId: "1:983145892348:web:958f0b86903d6a4ea10a79",
+          measurementId: "G-4CTF82WDGG"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+      </script>
+    <script src="js/rescuers.js"></script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt2Du1GgW9VgR4kisFtxcJBLhRHQv8H3Q&callback=initMap"
+    async defer></script>
+  </body>
+
+</html>

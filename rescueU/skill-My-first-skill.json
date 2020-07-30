@@ -1,0 +1,1500 @@
+{
+  "name": "My first skill",
+  "intents": [
+    {
+      "intent": "naturalD",
+      "examples": [
+        {
+          "text": "Floods"
+        },
+        {
+          "text": "Tsunami"
+        },
+        {
+          "text": "Blizzard"
+        },
+        {
+          "text": "Cold wave"
+        },
+        {
+          "text": "Heat wave"
+        },
+        {
+          "text": "Tornado"
+        },
+        {
+          "text": "Drought"
+        },
+        {
+          "text": "Thunderstorm"
+        },
+        {
+          "text": "Wildfire"
+        },
+        {
+          "text": "Earthquake"
+        }
+      ],
+      "description": "natural disasters"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "NaturalD",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Blizzard",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Cold wave",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Droughts",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Earthquake",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Flood",
+          "synonyms": [
+            "flooding"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Heat wave",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Thunderstorms",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Tornado",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Tsunami",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Wildfire",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "injured",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "im bleeding",
+          "synonyms": [
+            "i have an open wound"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "safe",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "safe",
+          "synonyms": [
+            "im safe",
+            "Im in a safe place"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Booleaan",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "yes",
+          "synonyms": [
+            "true"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "no",
+          "synonyms": [
+            "false"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "skill_id": "9e62aa58-6072-490c-a9ae-3bd67d1f425e",
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1572715559217",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1572715559230",
+      "previous_sibling": "handler_10_1572715559230"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_5_1572715559217",
+      "event_name": "input",
+      "dialog_node": "handler_10_1572715559230"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_5_1572720004332",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How bad?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_27_1572722763740",
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "response_31_1572722763740",
+      "previous_sibling": "node_30_1572722763740"
+    },
+    {
+      "type": "standard",
+      "title": "other injures",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "help is on its way"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_27_1572722763740",
+      "conditions": "anything_else",
+      "dialog_node": "node_30_1572722763740",
+      "previous_sibling": "node_28_1572722763740"
+    },
+    {
+      "type": "standard",
+      "title": "is injured",
+      "output": {},
+      "parent": "node_27_1572722763740",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@injured",
+      "dialog_node": "node_28_1572722763740"
+    },
+    {
+      "type": "standard",
+      "title": "safety",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Are you injured?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1572717325924",
+      "conditions": "@safe:safe",
+      "dialog_node": "node_2_1572719698609"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_10_1572720276360",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Cover the wound and apply pressure help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1572721925573",
+      "conditions": "@injured:(im bleeding)",
+      "dialog_node": "response_5_1572721925573"
+    },
+    {
+      "type": "standard",
+      "title": "no",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Stay safe help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_34_1572723068605",
+      "conditions": "@Booleaan:no",
+      "dialog_node": "node_40_1572723068605",
+      "previous_sibling": "node_35_1572723068605"
+    },
+    {
+      "type": "standard",
+      "title": "yes",
+      "output": {},
+      "parent": "node_34_1572723068605",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "node_35_1572723068605"
+    },
+    {
+      "type": "standard",
+      "title": "other injures",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "help is on its way"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1572721925573",
+      "conditions": "anything_else",
+      "dialog_node": "node_6_1572721925573",
+      "previous_sibling": "node_4_1572721925573"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_5_1572720004332",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How bad?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1572721925573",
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "response_7_1572721925573",
+      "previous_sibling": "node_6_1572721925573"
+    },
+    {
+      "type": "standard",
+      "title": "is injured",
+      "output": {},
+      "parent": "node_3_1572721925573",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@injured",
+      "dialog_node": "node_4_1572721925573"
+    },
+    {
+      "type": "standard",
+      "title": "safety",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Are you injured?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_25_1572722763737",
+      "conditions": "@safe:safe",
+      "dialog_node": "node_26_1572722763740"
+    },
+    {
+      "type": "standard",
+      "title": "safety",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Are you injured?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_49_1572723353667",
+      "conditions": "@safe:safe",
+      "dialog_node": "node_50_1572723353669"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_10_1572720276360",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Cover the wound and apply pressure help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_12_1572722321017",
+      "conditions": "@injured:(im bleeding)",
+      "dialog_node": "response_13_1572722321017"
+    },
+    {
+      "type": "standard",
+      "title": "safety",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Are you injured?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_17_1572722563795",
+      "conditions": "@safe:safe",
+      "dialog_node": "node_18_1572722563797"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Cover the wound and apply pressure help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1572720067665",
+      "conditions": "@injured:(im bleeding)",
+      "dialog_node": "response_10_1572720276360"
+    },
+    {
+      "type": "standard",
+      "title": "no",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Stay safe help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1572722321017",
+      "conditions": "@Booleaan:no",
+      "dialog_node": "node_16_1572722321017",
+      "previous_sibling": "node_11_1572722321017"
+    },
+    {
+      "type": "standard",
+      "title": "yes",
+      "output": {},
+      "parent": "node_10_1572722321017",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "node_11_1572722321017"
+    },
+    {
+      "type": "standard",
+      "title": "other injures",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "help is on its way"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1572719965501",
+      "conditions": "anything_else",
+      "dialog_node": "node_9_1572721325906",
+      "previous_sibling": "node_5_1572720067665"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How bad?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1572719965501",
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "response_5_1572720004332",
+      "previous_sibling": "node_9_1572721325906"
+    },
+    {
+      "type": "standard",
+      "title": "is injured",
+      "parent": "node_7_1572719965501",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@injured",
+      "dialog_node": "node_5_1572720067665"
+    },
+    {
+      "type": "standard",
+      "title": "no",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Stay safe help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1572721925573",
+      "conditions": "@Booleaan:no",
+      "dialog_node": "node_8_1572721925573",
+      "previous_sibling": "node_3_1572721925573"
+    },
+    {
+      "type": "standard",
+      "title": "yes",
+      "output": {},
+      "parent": "node_2_1572721925573",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "node_3_1572721925573"
+    },
+    {
+      "type": "standard",
+      "title": "no",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Stay safe help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_50_1572723353669",
+      "conditions": "@Booleaan:no",
+      "dialog_node": "node_56_1572723353669",
+      "previous_sibling": "node_51_1572723353669"
+    },
+    {
+      "type": "standard",
+      "title": "yes",
+      "output": {},
+      "parent": "node_50_1572723353669",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "node_51_1572723353669"
+    },
+    {
+      "type": "standard",
+      "title": "other injures",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "help is on its way"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_51_1572723353669",
+      "conditions": "anything_else",
+      "dialog_node": "node_54_1572723353669",
+      "previous_sibling": "node_52_1572723353669"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_5_1572720004332",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How bad?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_51_1572723353669",
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "response_55_1572723353669",
+      "previous_sibling": "node_54_1572723353669"
+    },
+    {
+      "type": "standard",
+      "title": "is injured",
+      "output": {},
+      "parent": "node_51_1572723353669",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@injured",
+      "dialog_node": "node_52_1572723353669"
+    },
+    {
+      "type": "standard",
+      "title": "no",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Stay safe help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_18_1572722563797",
+      "conditions": "@Booleaan:no",
+      "dialog_node": "node_24_1572722563797",
+      "previous_sibling": "node_19_1572722563797"
+    },
+    {
+      "type": "standard",
+      "title": "yes",
+      "output": {},
+      "parent": "node_18_1572722563797",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "node_19_1572722563797"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_10_1572720276360",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Cover the wound and apply pressure help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_52_1572723353669",
+      "conditions": "@injured:(im bleeding)",
+      "dialog_node": "response_53_1572723353669"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_5_1572720004332",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How bad?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_11_1572722321017",
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "response_15_1572722321017",
+      "previous_sibling": "node_14_1572722321017"
+    },
+    {
+      "type": "standard",
+      "title": "other injures",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "help is on its way"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_11_1572722321017",
+      "conditions": "anything_else",
+      "dialog_node": "node_14_1572722321017",
+      "previous_sibling": "node_12_1572722321017"
+    },
+    {
+      "type": "standard",
+      "title": "is injured",
+      "output": {},
+      "parent": "node_11_1572722321017",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@injured",
+      "dialog_node": "node_12_1572722321017"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_5_1572720004332",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How bad?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_43_1572723299546",
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "response_47_1572723299546",
+      "previous_sibling": "node_46_1572723299546"
+    },
+    {
+      "type": "standard",
+      "title": "other injures",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "help is on its way"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_43_1572723299546",
+      "conditions": "anything_else",
+      "dialog_node": "node_46_1572723299546",
+      "previous_sibling": "node_44_1572723299546"
+    },
+    {
+      "type": "standard",
+      "title": "is injured",
+      "output": {},
+      "parent": "node_43_1572723299546",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@injured",
+      "dialog_node": "node_44_1572723299546"
+    },
+    {
+      "type": "standard",
+      "title": "no",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Stay safe help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_26_1572722763740",
+      "conditions": "@Booleaan:no",
+      "dialog_node": "node_32_1572722763740",
+      "previous_sibling": "node_27_1572722763740"
+    },
+    {
+      "type": "standard",
+      "title": "yes",
+      "output": {},
+      "parent": "node_26_1572722763740",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "node_27_1572722763740"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_5_1572720004332",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How bad?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_35_1572723068605",
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "response_39_1572723068605",
+      "previous_sibling": "node_38_1572723068605"
+    },
+    {
+      "type": "standard",
+      "title": "other injures",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "help is on its way"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_35_1572723068605",
+      "conditions": "anything_else",
+      "dialog_node": "node_38_1572723068605",
+      "previous_sibling": "node_36_1572723068605"
+    },
+    {
+      "type": "standard",
+      "title": "is injured",
+      "output": {},
+      "parent": "node_35_1572723068605",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@injured",
+      "dialog_node": "node_36_1572723068605"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_10_1572720276360",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Cover the wound and apply pressure help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_44_1572723299546",
+      "conditions": "@injured:(im bleeding)",
+      "dialog_node": "response_45_1572723299546"
+    },
+    {
+      "type": "standard",
+      "title": "safety",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Are you injured?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1572721925571",
+      "conditions": "@safe:safe",
+      "dialog_node": "node_2_1572721925573"
+    },
+    {
+      "type": "standard",
+      "title": "no",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Stay safe help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_42_1572723299546",
+      "conditions": "@Booleaan:no",
+      "dialog_node": "node_48_1572723299546",
+      "previous_sibling": "node_43_1572723299546"
+    },
+    {
+      "type": "standard",
+      "title": "yes",
+      "output": {},
+      "parent": "node_42_1572723299546",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "node_43_1572723299546"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_10_1572720276360",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Cover the wound and apply pressure help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_20_1572722563797",
+      "conditions": "@injured:(im bleeding)",
+      "dialog_node": "response_21_1572722563797"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_10_1572720276360",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Cover the wound and apply pressure help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_36_1572723068605",
+      "conditions": "@injured:(im bleeding)",
+      "dialog_node": "response_37_1572723068605"
+    },
+    {
+      "type": "standard",
+      "title": "safety",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Are you injured?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_41_1572723299543",
+      "conditions": "@safe:safe",
+      "dialog_node": "node_42_1572723299546"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_10_1572720276360",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Cover the wound and apply pressure help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_28_1572722763740",
+      "conditions": "@injured:(im bleeding)",
+      "dialog_node": "response_29_1572722763740"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_5_1572715558855",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Earthquake"
+              },
+              {
+                "text": "earthqueke"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1572715201993",
+      "disabled": true,
+      "dialog_node": "response_5_1572715558855",
+      "previous_sibling": "slot_5_1572715559217"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_6_1572715559852",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1572715201993",
+      "disabled": true,
+      "conditions": "anything_else",
+      "dialog_node": "response_6_1572715559852",
+      "previous_sibling": "response_8_1572715559557"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_8_1572715559557",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1572715201993",
+      "disabled": true,
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_8_1572715559557",
+      "previous_sibling": "response_5_1572715558855"
+    },
+    {
+      "type": "slot",
+      "parent": "node_3_1572715201993",
+      "dialog_node": "slot_5_1572715559217"
+    },
+    {
+      "type": "standard",
+      "title": "safety",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Are you injured?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_33_1572723068602",
+      "conditions": "@safe:safe",
+      "dialog_node": "node_34_1572723068605"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_5_1572720004332",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How bad?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_19_1572722563797",
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "response_23_1572722563797",
+      "previous_sibling": "node_22_1572722563797"
+    },
+    {
+      "type": "standard",
+      "title": "other injures",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "help is on its way"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_19_1572722563797",
+      "conditions": "anything_else",
+      "dialog_node": "node_22_1572722563797",
+      "previous_sibling": "node_20_1572722563797"
+    },
+    {
+      "type": "standard",
+      "title": "is injured",
+      "output": {},
+      "parent": "node_19_1572722563797",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@injured",
+      "dialog_node": "node_20_1572722563797"
+    },
+    {
+      "type": "standard",
+      "title": "no",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Stay safe help is on its way!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1572719698609",
+      "conditions": "@Booleaan:no",
+      "dialog_node": "node_5_1572720914161",
+      "previous_sibling": "node_7_1572719965501"
+    },
+    {
+      "type": "standard",
+      "title": "yes",
+      "parent": "node_2_1572719698609",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Booleaan:yes",
+      "dialog_node": "node_7_1572719965501"
+    },
+    {
+      "type": "standard",
+      "title": "safety",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Are you injured?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1572722321014",
+      "conditions": "@safe:safe",
+      "dialog_node": "node_10_1572722321017"
+    },
+    {
+      "type": "standard",
+      "title": "Droughts",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Help is on its way!\n\nhttps://www.ready.gov/drought\n\nNotify us when you are safe!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@NaturalD:Droughts",
+      "dialog_node": "node_49_1572723353667",
+      "previous_sibling": "node_3_1572717325924"
+    },
+    {
+      "type": "standard",
+      "title": "Blizzards",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Help is on its way!\naccording to https://www.ready.gov/winter-weather?gclid=EAIaIQobChMIgKz248jM5QIVCtbACh2K0QrSEAAYASAAEgIucvD_BwE\n\"Stay off roads.\nStay indoors and dress warmly.\nPrepare for power outages.\nUse generators outside only and away from windows.\nListen for emergency information and alerts.\nLook for signs of hypothermia and frostbite.\nCheck on neighbors.\"\n\nNotify us when you are safe!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@NaturalD:Blizzard",
+      "dialog_node": "node_17_1572722563795",
+      "previous_sibling": "node_25_1572722763737"
+    },
+    {
+      "type": "standard",
+      "title": "Thunderstorms",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Help is on its way!\naccording to https://www.ready.gov/thunderstorms-lightning\n\"When thunder roars, go indoors!\nMove from outdoors into a building or car.\nPay attention to alerts and warnings.\nUnplug appliances.\nDo not use landline phones.\"\n\nNotify us when you are safe!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@NaturalD:Thunderstorms",
+      "dialog_node": "node_41_1572723299543",
+      "previous_sibling": "node_49_1572723353667"
+    },
+    {
+      "type": "standard",
+      "title": "Tsunami",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Help is on its way!\naccording to https://www.ready.gov/tsunami\n\"First, protect yourself from an Earthquake. Drop, Cover, then Hold On.\nGet to high ground as far inland as possible.\nBe alert to signs of a tsunami, such as a sudden rise or draining of ocean waters.\nListen to emergency information and alerts.\nEvacuate: DO NOT wait! Leave as soon as you see any natural signs of a tsunami or receive an official tsunami warning.\nIf you are in a boat, go out to sea.\"\n\nNotify us when you are safe!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@NaturalD:Tsunami",
+      "dialog_node": "node_9_1572722321014",
+      "previous_sibling": "node_17_1572722563795"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_1_1572721925571"
+    },
+    {
+      "type": "standard",
+      "title": "Wildfire",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Help is on its way!\naccording to https://www.ready.gov/wildfires\n\"Leave if told to do so.\nIf trapped, call 9-1-1.\nListen for emergency information and alerts.\nUse N95 masks to keep particles out of the air you breathe.\"\n\nNotify us when you are safe!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@NaturalD:Wildfire",
+      "dialog_node": "node_33_1572723068602",
+      "previous_sibling": "node_41_1572723299543"
+    },
+    {
+      "type": "standard",
+      "title": "Earthquake",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Help is on its way!\naccording to https://www.ready.gov/earthquake\n\"Drop, Cover, then Hold On.\nIf you are in a vehicle, pull over and stop. Set your parking brake.\nIf you are in bed, turn face down and cover your head and neck with a pillow.\nIf you are outdoors, stay outdoors away from buildings.\nDo not get in a doorway.\nDo not run outside.\"\n\nNotify us when you are safe!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@NaturalD:Earthquake",
+      "dialog_node": "node_3_1572717325924",
+      "previous_sibling": "node_3_1572715201993"
+    },
+    {
+      "type": "standard",
+      "title": "Tornado",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Help is on its way!\naccording to https://www.ready.gov/tornado\n\"If you can safely get to a sturdy building, then do so immediately.\nGo to a safe room, basement, or storm cellar.\nIf you are in a building with no basement, then get to a small interior room on the lowest level.\nStay away from windows, doors, and outside walls.\nDo not get under an overpass or bridge. You’re safer in a low, flat location.\nWatch out for flying debris that can cause injury or death.\nUse your arms to protect your head and neck.\"\n\nNotify us when you are safe!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@NaturalD:Tornado",
+      "dialog_node": "node_25_1572722763737",
+      "previous_sibling": "node_33_1572723068602"
+    },
+    {
+      "type": "standard",
+      "title": "Flood",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Help is on its way!\naccording to https://www.ready.gov/flood\n\"Do not walk, swim, or drive through floodwaters. Turn Around, Don’t Drown!\nJust six inches of moving water can knock you down, and one foot of moving water can sweep your vehicle away.\nStay off of bridges over fast-moving water.\nEvacuate if told to do so.\nMove to higher ground or a higher floor.\"\n\nNotify us when you are safe!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@NaturalD:Flood",
+      "dialog_node": "node_1_1572721925571",
+      "previous_sibling": "node_9_1572722321014"
+    },
+    {
+      "type": "standard",
+      "title": "RescueU chatbot",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "What is your emergency? "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "callout": {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "": ""
+          },
+          "result_variable": "webhook_result_1"
+        },
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "conditions": "welcome",
+      "dialog_node": "node_3_1572715201993"
+    }
+  ],
+  "workspace_id": "9e62aa58-6072-490c-a9ae-3bd67d1f425e",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}

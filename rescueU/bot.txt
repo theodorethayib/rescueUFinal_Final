@@ -1,0 +1,58 @@
+Bot:
+What is your emergency?
+
+User:
+Earthquake 
+
+Bot:
+Help is on its way
+If you are in a vehicle, pull over and stop. Set your parking brake.
+If you are in bed, turn face down and cover your head and neck with a pillow.
+If you are outdoors, stay outdoors away from buildings.
+Do not get in a doorway.
+Do not run outside.
+Notify us when you are safe!
+
+User:
+I’m safe
+
+Bot:
+1.Are you injured?
+
+User:
+1.No
+2.Yes
+
+Bot:
+1.is there anyone with you? If yes how many and is anyone injured?
+2.How bad?
+
+User:
+1.One not injured.
+2.im bleeding
+
+Bot:
+1.Stay safe help is on its way!
+2.Cover the wound with clothing and apply pressure help is on its way!
+
+Floods
+
+Do not walk, swim, or drive through flood waters. Turn Around, Don’t Drown!
+Just six inches of moving water can knock you down, and one foot of moving water can sweep your vehicle away.
+Stay off of bridges over fast-moving water.
+Evacuate if told to do so.
+Move to higher ground or a higher floor.
+Stay where you are.
+
+Tsunami
+Blizzards
+Cold waves
+Heat waves
+Tornadoes
+Droughts
+Thunderstorms
+Wildfire
+vokenos 
+land slide
+avalanch 
+
